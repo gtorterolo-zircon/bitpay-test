@@ -35,10 +35,18 @@ export class AppService {
   private client: Client;
 
   constructor() {
-    this.client = new Client(null, Env.Test, PRIVATE_KEY, {
-      // [Tokens.merchant]: MERCHANT_TOKEN,
-      merchant: MERCHANT_TOKEN,
-    });
+    const tokens = Tokens;
+    tokens.merchant = MERCHANT_TOKEN;
+    this.client = new Client(
+      null,
+      Env.Test,
+      PRIVATE_KEY,
+      tokens,
+      // {
+      //   // [Tokens.merchant]: MERCHANT_TOKEN,
+      //   merchant: MERCHANT_TOKEN,
+      // },
+    );
   }
 
   root(): string {
